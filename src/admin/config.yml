@@ -1,7 +1,7 @@
 backend:
   # Use netlify identity as backend
   name: git-gateway
-  branch: master
+  branch: main
   ### enable below lines for github integration ###
   # name: github
   # repo: surjithctly/neat-starter
@@ -30,6 +30,18 @@ collections:
         multiple: true
         create: true
         options: ["Tags", "created", "from", "config.yml"]
+  - label: "Memes"
+    name: "memes"
+    editor:
+      preview: false
+    folder: "src/memes"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Blank Image", name: "blank", widget: "image", choose_url: true, media_library: { config: { multiple: false } } }
+      - { label: "KnowYourMeme URL", name: "KnowYourMemeURL", widget: "string" }
+      - { label: "Alt Text Template", name: "template", widget: "text" }
+      - { label: "Related Memes", name: "related", widget: "relation", collection: "memes", multiple: true, value_field: "title", search_fields: ["title"], required: false }
   - label: "Settings"
     name: "settings"
     editor:
